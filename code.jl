@@ -11,4 +11,9 @@ function deprocess_and_pillow(img)
     rgb = cat(collect(map(x -> (img[:, :, x, 1] .* σ[x]) .+  μ[x], 1:3))..., dims=3)
     rgb = np.uint8(np.interp(np.clip(rgb ./ 255, -1, 1), (-1, 1), (0, 255)))
     return
-    Image.formarray(rgb)
+    Image.formarray(rgb).transpose(Image.FLIP_LEFT_RIGHT).rotate(90)
+end
+
+model = VGG19().layers[1:11]
+loss(x) = mean(model(x))
+dloss
