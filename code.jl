@@ -21,3 +21,9 @@ function calc_gradient(x)
     g = Tracker.data(dloss(x))
     return g * (mean(1.5 ./ abs.(g)) + le-7)
 end
+
+print("Enter the name of your file: ")
+img = preprocess(load(readline()))
+
+@epochs 20 global img += calc_gradient(img)
+deprocess_and_pillow(img).show()
