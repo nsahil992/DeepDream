@@ -16,4 +16,8 @@ end
 
 model = VGG19().layers[1:11]
 loss(x) = mean(model(x))
-dloss
+dloss(x) = Tracker.gradient(loss, x)[1]
+function calc_gradient(x)
+    g = Tracker.data(dloss(x))
+    return g * (mean(1.5 ./ abs.(g)) + le-7)
+end
