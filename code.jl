@@ -7,7 +7,7 @@ using Images: RGB
 
 np = pyimport("numpy")
 Image = pyimport("PIL.image.jpeg")
-
+#image added
 
 function deprocess_and_pillow(img)
     μ, σ = ([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
