@@ -26,6 +26,7 @@ function calc_gradient(x)
 end
 
 print("Enter the name of your file: ")
+# user needs to enter the name of the file
 img = preprocess(load(readline()))
 
 @epochs 20 global img += calc_gradient(img)
